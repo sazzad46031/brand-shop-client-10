@@ -16,8 +16,9 @@ const router = createBrowserRouter([
     element: <Mainlayout></Mainlayout>,
     children:[
       {
-        path:"/home",
-        element: <Home></Home>
+        path:"/",
+        element: <Home></Home>,
+        loader: ()=> fetch('data.json')
       },
       {
         path: "/addproduct",

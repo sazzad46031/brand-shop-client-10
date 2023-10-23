@@ -1,0 +1,33 @@
+[
+    {
+      "id": 1,
+      "brand_name": "Apple",
+      "brand_image": "https://i.ibb.co/ts8V8Lx/5f0f6c96988ee32372206555.webp"
+    },
+    {
+      "id": 2,
+      "brand_name": "Samsung",
+      "brand_image": "https://i.ibb.co/YkFLZVL/samsung-logo1-300x300-e1465307161764.webp"
+    },
+    {
+      "id": 3,
+      "brand_name": "Sony",
+      "brand_image": "https://i.ibb.co/mGnSpL3/de4kjpc-1c276a6b-a004-4d4b-9dc1-09a1749b8324.jpg"
+    },
+    {
+      "id": 4,
+      "brand_name": "Huawei",
+      "brand_image": "https://i.ibb.co/stvMQMt/logo-400x200.webp"
+    },
+    {
+      "id": 5,
+      "brand_name": "Intel",
+      "brand_image": "https://i.ibb.co/JkQQ4ZX/Capture.png"
+    },
+    {
+      "id": 6,
+      "brand_name": "Walton",
+      "brand_image": "https://i.ibb.co/BcYbGMB/social-link-share-logo.jpg"
+    }
+  ]
+  
