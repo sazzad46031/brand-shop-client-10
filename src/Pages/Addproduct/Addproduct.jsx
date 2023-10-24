@@ -1,6 +1,10 @@
 import Swal from 'sweetalert2'
+import { useLoaderData } from "react-router-dom";
 
 const Addproduct = () => {
+
+    const brands = useLoaderData();
+    
     const handleAddProduct = event =>{
         event.preventDefault()
         const form = event.target
@@ -34,6 +38,26 @@ const Addproduct = () => {
             }
         })
     }
+
+    const brandsOptions = () => {
+        return brands?.map( brand => <option key={brand.id}>{brand.brand_name}</option> );
+    }
+
+    const getBrandProducts = ( brand_name ) => {
+        return [];
+    }
+
+    const getBrandData = ( brand_name, with_products = false ) => {
+        const brand = brands?.find( brand => brand.brand_name === brand_name );
+        if ( brand && with_products ) {
+            brand.products = getBrandProducts( brand_name );
+        }
+        return brand;
+        
+    }
+
+    // console.log( getBrandData( "Sony" ) );
+
     return (
         <div className="bg-lime-200 max-w-screen-2xl mx-auto p-24">
             <h2 className="text-5xl text-purple-400 font-bold mb-8 text-center">Add Product</h2>
@@ -43,39 +67,31 @@ const Addproduct = () => {
                         <label className="label">
                             <span className="label-text">Name</span>
                         </label>
-                        <label className="input-group">
-                            
-                            <input type="text" placeholder="Name" name="name" className="input w-full input-bordered" />
-                        </label>
+                        <input type="text" placeholder="Name" name="name" className="input w-full input-bordered" />
                     </div>
                     <div className="form-control md:w-1/2 ml-4">
                         <label className="label">
                             <span className="label-text">Brand Name</span>
                         </label>
-                        <label className="input-group">
-                            
-                            <input type="text" placeholder="Brand Name" name="brandName" className="input w-full input-bordered" />
-                        </label>
+                        <select className="select  w-full select-bordered" name="brandName" defaultValue="">
+                            <option disabled value="">Brand Name</option>
+                            { brandsOptions() }
+                        </select>
                     </div>
+
                 </div>
                 <div className="md:flex mb-8">
                     <div className="form-control md:w-1/2">
                         <label className="label">
                             <span className="label-text">Type</span>
                         </label>
-                        <label className="input-group">
-                            
-                            <input type="text" placeholder="Type" name="type" className="input w-full input-bordered" />
-                        </label>
+                        <input type="text" placeholder="Type" name="type" className="input w-full input-bordered" />
                     </div>
                     <div className="form-control md:w-1/2 ml-4">
                         <label className="label">
                             <span className="label-text">Price</span>
                         </label>
-                        <label className="input-group">
-                            
-                            <input type="text" placeholder="Price" name="price" className="input w-full input-bordered" />
-                        </label>
+                        <input type="text" placeholder="Price" name="price" className="input w-full input-bordered" />
                     </div>
                 </div>
                 <div className="md:flex mb-8">
@@ -83,29 +99,20 @@ const Addproduct = () => {
                         <label className="label">
                             <span className="label-text">Short description</span>
                         </label>
-                        <label className="input-group">
-                            
-                            <input type="text" placeholder="Short description" name="shortDescription" className="input w-full input-bordered" />
-                        </label>
+                        <input type="text" placeholder="Short description" name="shortDescription" className="input w-full input-bordered" />
                     </div>
                     <div className="form-control md:w-1/2 ml-4">
                         <label className="label">
                             <span className="label-text">Rating</span>
                         </label>
-                        <label className="input-group">
-                            
-                            <input type="text" placeholder="Rating" name="rating" className="input w-full input-bordered" />
-                        </label>
+                        <input type="text" placeholder="Rating" name="rating" className="input w-full input-bordered" />
                     </div>
                 </div>
                     <div className="form-control w-full mb-8">
                         <label className="label">
                             <span className="label-text">Image</span>
                         </label>
-                        <label className="input-group">
-                            
-                            <input type="text" placeholder="Image" name="image" className="input w-full input-bordered" />
-                        </label>
+                        <input type="text" placeholder="Image" name="image" className="input w-full input-bordered" />
                     </div>
                     <input type="submit" value="Add Product" className="btn btn-block bg-purple-400" />
             </form>

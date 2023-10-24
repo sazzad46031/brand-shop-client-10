@@ -5,11 +5,13 @@ import './index.css'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import Mainlayout from './Mainlayout/Mainlayout.jsx';
 import Home from './Pages/Home/Home.jsx';
-import Addproduct from './Pages/Addproduct/Addproduct.jsx';
-import Mycart from './Pages/Mycart/Mycart.jsx';
-import Login from './Pages/Login/Login.jsx';
-import Register from './Components/Register/Register.jsx';
-import ProductPage from './Components/ProductPage/ProductPage';
+import SingleBrand from './Pages/Single/SingleBrand';
+import Addproduct from './Pages/Addproduct/Addproduct';
+
+
+
+
+
 
 const router = createBrowserRouter([
   {
@@ -18,30 +20,39 @@ const router = createBrowserRouter([
     children:[
       {
         path:"/",
-        element: <Home></Home>,
-        loader: ()=> fetch('data.json')
+        element: <Home></Home>
       },
+      {
+        path: "/brands/:id",
+        element : <SingleBrand></SingleBrand>,
+        loader : ()=> fetch('http://localhost:5000/brands')
+      },
+      {
+        path: "/products/:id",
+        element : <SingleBrand></SingleBrand>,
+        loader : ()=> fetch('http://localhost:5000/products')
+      },
+      
       {
         path: "/addproduct",
         element: <Addproduct></Addproduct>
-      },
-      {
-        path: "/mycart",
-        element: <Mycart></Mycart>
-      },
-      {
-        path:"/login",
-        element: <Login></Login>
-      },
-      {
-        path: "/register",
-        element: <Register></Register>
-      },
-      {
-        path : "/products/:id",
-        element: <ProductPage></ProductPage>,
-        loader : ()=> fetch('http://localhost:5000/products')
       }
+      // {
+      //   path: "/mycart",
+      //   element: <Mycart></Mycart>
+      // },
+      // {
+      //   path:"/login",
+      //   element: <Login></Login>
+      // },
+      // {
+      //   path: "/register",
+      //   element: <Register></Register>
+      // },
+      // {
+      //   path : "/products/:id",
+      //   element: <ProductPage></ProductPage>
+      // }
     ]
   },
 ]);

@@ -1,14 +1,21 @@
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import BrandView from "../BrandView/BrandView";
 
 
-const BrandCollection = ({brand}) => {
-    const {brand_image, brand_name} = brand
+const BrandCollection = () => {
+
+    const [ brands, setBrands] = useState([])
+
+    useEffect( () => {
+        fetch("http://localhost:5000/brands")
+        .then(response => response.json())
+        .then(data => setBrands(data))
+    }, []);
+
     return (
         <div>
-           <Link to={`/products/${brand._id}`}>
-                <img className="w-96 h-64" src={brand_image} alt="" />
-                <p className="text-4xl mt-4 font-bold">{brand_name}</p>  
-           </Link>
+           
+            { brands?.map( brand => <BrandView key={ brand._id } brand={brand}></BrandView> ) }
         </div>
     );
 };
