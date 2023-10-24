@@ -9,6 +9,7 @@ import Addproduct from './Pages/Addproduct/Addproduct.jsx';
 import Mycart from './Pages/Mycart/Mycart.jsx';
 import Login from './Pages/Login/Login.jsx';
 import Register from './Components/Register/Register.jsx';
+import ProductPage from './Components/ProductPage/ProductPage';
 
 const router = createBrowserRouter([
   {
@@ -35,6 +36,11 @@ const router = createBrowserRouter([
       {
         path: "/register",
         element: <Register></Register>
+      },
+      {
+        path : "/products/:id",
+        element: <ProductPage></ProductPage>,
+        loader : ()=> fetch('http://localhost:5000/products')
       }
     ]
   },
