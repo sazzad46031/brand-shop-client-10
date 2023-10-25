@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
-
+import Swal from 'sweetalert2'
 
 const Register = () => {
     const { createUser } = useContext(AuthContext)
@@ -13,7 +13,14 @@ const Register = () => {
         const email = e.target.email.value;
         const password = e.target.password.value;
         const image = e.target.image.value;
-        console.log(image,name,email,password)
+        if(!/^(?=.*[A-Z])(?=.*[\W_]).{7,}$/.test(password)){
+            Swal.fire({
+                title: 'Error!',
+                text: 'Password should be greater than six character , at least one capital letter and at least one special character',
+                icon: 'error',
+                confirmButtonText: 'Cool'
+              })
+        }
         createUser(email,password)
         .then(result => {
             console.log(result.user)
