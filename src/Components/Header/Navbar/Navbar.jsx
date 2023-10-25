@@ -1,7 +1,15 @@
-import { NavLink } from "react-router-dom";
+import { useContext } from "react";
+import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../../../Provider/AuthProvider";
 
 
 const Navbar = () => {
+    const { user , logOut} = useContext(AuthContext)
+    const handleLogOut = ()=>{
+        logOut()
+        .then(()=> console.log('User logged out succesfully'))
+        .catch(error => console.log(error))
+    }
     return (
         <div className="max-w-screen-2xl mx-auto">
             <div className="navbar bg-purple-400">
@@ -71,7 +79,9 @@ const Navbar = () => {
                                     Home
                                 </NavLink>
                             </li>
-                            <li className="pr-4 text-white">
+                            {
+                                user && <>
+                                    <li className="pr-4 text-white">
                                 <NavLink
                                     to="/addproduct"
                                     className={({ isActive, isPending }) =>
@@ -91,6 +101,8 @@ const Navbar = () => {
                                     My Cart
                                 </NavLink>
                             </li>    
+                                </>
+                            }
                             <li className="pr-4 text-white">
                                 <NavLink
                                     to="/login"
@@ -102,8 +114,19 @@ const Navbar = () => {
                                 </NavLink>
                             </li>
                     </ul>
+                    
                 </div>
-                
+                <div className="navbar-end">
+                    {
+                        user ? <>
+                            <span>{user.displayName} {user.photoUrl}</span>
+                            <a onClick={handleLogOut} className="btn btn-sm">Sign out</a>
+                        </>
+                        : <Link to='/login'>
+                            <button className="btn btn-sm">Login</button>
+                        </Link>
+                    }
+                </div>
             </div>
         </div>
     );
