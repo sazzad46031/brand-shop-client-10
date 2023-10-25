@@ -13,7 +13,7 @@ const SingleBrand = () => {
     const [ products, setProducts] = useState([])
 
     useEffect( () => {
-        fetch("http://localhost:5000/products")
+        fetch(" https://brand-shop-server-a727m45ha-sazzads-projects-085dcc12.vercel.app/products")
         .then(response => response.json())
         .then( _products => {
             let brandProducts = _products.filter( _product => _product.brandName === brand.brand_name );

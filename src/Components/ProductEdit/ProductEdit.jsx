@@ -18,7 +18,7 @@ const ProductEdit = () => {
 
         const updateProduct = { name, brandName, type, price, shortDescription, rating, image }
         console.log(updateProduct)
-        fetch(`http://localhost:5000/productedit/${_id}`,{
+        fetch(` https://brand-shop-server-a727m45ha-sazzads-projects-085dcc12.vercel.app/productedit/${_id}`,{
             method: 'PUT',
             headers : {
                 'content-type' : 'application/json'

@@ -34,12 +34,12 @@ const router = createBrowserRouter([
       {
         path: "/brands/:id",
         element : <SingleBrand></SingleBrand>,
-        loader : ()=> fetch('http://localhost:5000/brands')
+        loader : ()=> fetch(' https://brand-shop-server-a727m45ha-sazzads-projects-085dcc12.vercel.app/brands')
       },
       {
         path: "/products/:id",
         element : <PrivateRoute><SingleProduct></SingleProduct></PrivateRoute>,
-        loader : ()=> fetch('http://localhost:5000/products')
+        loader : ()=> fetch(' https://brand-shop-server-a727m45ha-sazzads-projects-085dcc12.vercel.app/products')
       },
       
       {
@@ -49,7 +49,7 @@ const router = createBrowserRouter([
       {
         path: "/mycart",
         element: <Mycart></Mycart>,
-        loader: ()=> fetch('http://localhost:5000/products')
+        loader: ()=> fetch(' https://brand-shop-server-a727m45ha-sazzads-projects-085dcc12.vercel.app/products')
       },
       {
         path:"/login",
@@ -62,7 +62,7 @@ const router = createBrowserRouter([
       {
         path: "/productedit/:id",
         element: <PrivateRoute><ProductEdit></ProductEdit></PrivateRoute>,
-        loader : ({params})=> fetch(`http://localhost:5000/products/${params.id}`)
+        loader : ({params})=> fetch(` https://brand-shop-server-a727m45ha-sazzads-projects-085dcc12.vercel.app/products/${params.id}`)
       }
       
     ]
