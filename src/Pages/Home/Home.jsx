@@ -1,6 +1,8 @@
 
 import BrandCollection from "../../Components/BrandCollection/BrandCollection";
 import Banner from "../../Components/Header/Banner/Banner";
+import Testimonial from "../../Components/Testimonial/Testimonial";
+
 
 
 
@@ -11,6 +13,8 @@ const Home = () => {
             <Banner></Banner>
             
             <BrandCollection></BrandCollection>
+            <Testimonial></Testimonial>
+            
         </div>
     );
 };
