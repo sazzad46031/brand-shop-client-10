@@ -10,7 +10,9 @@ const Navbar = () => {
         .then(()=> console.log('User logged out succesfully'))
         .catch(error => console.log(error))
     }
+    
     return (
+        
         <div className="max-w-screen-2xl mx-auto">
             <div className="navbar bg-purple-400">
                 <div className="navbar-start">

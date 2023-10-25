@@ -14,6 +14,7 @@ import Register from './Components/Register/Register.jsx';
 import AuthProvider from './Provider/AuthProvider';
 import PrivateRoute from './Routes/PrivateRoute';
 import ProductEdit from './Components/ProductEdit/ProductEdit';
+import ErrorPage from './ErrorPage';
 
 
 
@@ -24,6 +25,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <Mainlayout></Mainlayout>,
+    errorElement: <ErrorPage></ErrorPage>,
     children:[
       {
         path:"/",
@@ -46,7 +48,8 @@ const router = createBrowserRouter([
       },
       {
         path: "/mycart",
-        element: <Mycart></Mycart>
+        element: <Mycart></Mycart>,
+        loader: ()=> fetch('http://localhost:5000/products')
       },
       {
         path:"/login",
