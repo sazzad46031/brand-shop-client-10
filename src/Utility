@@ -1,0 +1,29 @@
+
+    const brandsOptions = () => {
+        return brands?.map( brand => <option key={brand.id}>{brand.brand_name}</option> );
+    }
+
+    const getBrandProducts = ( brand_name ) => {
+        return [];
+    }
+
+    const getBrandData = ( brand_name, with_products = false ) => {
+        const brand = brands?.find( brand => brand.brand_name === brand_name );
+        if ( brand && with_products ) {
+            brand.products = getBrandProducts( brand_name );
+        }
+        return brand;
+        
+    }
+
+
+
+    <div className="form-control md:w-1/2 ml-4">
+                        <label className="label">
+                            <span className="label-text">Brand Name</span>
+                        </label>
+                        <select className="select  w-full select-bordered" name="brandName" defaultValue="">
+                            <option disabled value="">Brand Name</option>
+                            { brandsOptions() }
+                        </select>
+                    </div>

@@ -13,6 +13,7 @@ import Login from './Pages/Login/Login.jsx';
 import Register from './Components/Register/Register.jsx';
 import AuthProvider from './Provider/AuthProvider';
 import PrivateRoute from './Routes/PrivateRoute';
+import ProductEdit from './Components/ProductEdit/ProductEdit';
 
 
 
@@ -54,11 +55,13 @@ const router = createBrowserRouter([
       {
         path: "/register",
         element: <Register></Register>
+      },
+      {
+        path: "/productedit/:id",
+        element: <PrivateRoute><ProductEdit></ProductEdit></PrivateRoute>,
+        loader : ({params})=> fetch(`http://localhost:5000/products/${params.id}`)
       }
-      // {
-      //   path : "/products/:id",
-      //   element: <ProductPage></ProductPage>
-      // }
+      
     ]
   },
 ]);

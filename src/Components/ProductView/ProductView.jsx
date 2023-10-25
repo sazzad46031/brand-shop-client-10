@@ -18,7 +18,9 @@ const ProductView = ({ product }) => {
                 <Link to={`/products/${product._id}`}>
                     <button className="btn btn-primary mr-4">Details</button>
                 </Link>
-                <button className="btn btn-secondary">Update</button>
+                <Link to={`/productedit/${product._id}`}>
+                    <button className="btn btn-secondary">Update</button>
+                </Link>
             </div>
         </div>
     );
