@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 
 
 const ProductView = ({ product }) => {
@@ -14,7 +15,9 @@ const ProductView = ({ product }) => {
                 <p>Price : {price}</p>
                 <p>Short description : {shortDescription}</p>
                 <p>Rating : {rating}</p>
-                <button className="btn btn-primary mr-4">Details</button>
+                <Link to={`/products/${product._id}`}>
+                    <button className="btn btn-primary mr-4">Details</button>
+                </Link>
                 <button className="btn btn-secondary">Update</button>
             </div>
         </div>

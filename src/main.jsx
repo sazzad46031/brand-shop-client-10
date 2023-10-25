@@ -7,6 +7,11 @@ import Mainlayout from './Mainlayout/Mainlayout.jsx';
 import Home from './Pages/Home/Home.jsx';
 import SingleBrand from './Pages/Single/SingleBrand';
 import Addproduct from './Pages/Addproduct/Addproduct';
+import SingleProduct from './Pages/Single/SingleProduct';
+import Mycart from './Pages/Mycart/Mycart.jsx';
+import Login from './Pages/Login/Login.jsx';
+import Register from './Components/Register/Register.jsx';
+import AuthProvider from './Provider/AuthProvider';
 
 
 
@@ -29,26 +34,26 @@ const router = createBrowserRouter([
       },
       {
         path: "/products/:id",
-        element : <SingleBrand></SingleBrand>,
+        element : <SingleProduct></SingleProduct>,
         loader : ()=> fetch('http://localhost:5000/products')
       },
       
       {
         path: "/addproduct",
         element: <Addproduct></Addproduct>
+      },
+      {
+        path: "/mycart",
+        element: <Mycart></Mycart>
+      },
+      {
+        path:"/login",
+        element: <Login></Login>
+      },
+      {
+        path: "/register",
+        element: <Register></Register>
       }
-      // {
-      //   path: "/mycart",
-      //   element: <Mycart></Mycart>
-      // },
-      // {
-      //   path:"/login",
-      //   element: <Login></Login>
-      // },
-      // {
-      //   path: "/register",
-      //   element: <Register></Register>
-      // },
       // {
       //   path : "/products/:id",
       //   element: <ProductPage></ProductPage>
@@ -59,6 +64,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider router={router}></RouterProvider>
+      <AuthProvider>
+        <RouterProvider router={router}></RouterProvider>
+      </AuthProvider>
   </React.StrictMode>,
 )

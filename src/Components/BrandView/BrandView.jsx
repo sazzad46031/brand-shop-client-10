@@ -7,8 +7,8 @@ const BrandView = ({brand}) => {
         <div>
            <Link to={`/brands/${brand._id}`}>
                 <div>
-                    <img src={brand_image} alt="" />
-                    <p>{brand_name}</p>
+                    <img className="w-96 h-64" src={brand_image} alt="" />
+                    <p className="text-4xl mt-4 font-bold">{brand_name}</p>
                 </div>
            </Link>
         </div>
